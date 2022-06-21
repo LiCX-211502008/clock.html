@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body{
+            background-image: url("BG.jpg");
+            background-repeat: no-repeat;
+            background-position: left top;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="shortcut icon" href="head.jpg">
+</head>
+<body>
+    <script>
+        function checktime(){
+            var time = new Date();
+            document.getElementById("time").innerHTML = time.getHours().toString().padStart(2,'0') + ":" + time.getMinutes().toString().padStart(2,'0') + ":" + time.getSeconds().toString().padStart(2,'0');
+        }
+        setInterval("checktime()",50)
+    </script>
+    <script>
+        function changeBG(){
+            document.getElementById("INPUT").style.display = "block";
+        }
+        function readandchange(){
+            document.getElementById("INPUT").style.display = "none";
+            var loc = document.getElementById("imgloc").value;
+            window.alert('url(' + loc + ')');
+            document.getElementsByName("body")[0].style.backgroundImage = 'url(' + loc + ')';
+        }
+    </script>
+    <!--<dev class="BGbox"></dev>-->
+
+    <dev class="header">
+        <br>
+        <h1 id="time" style="color: rgba(43, 43, 43, 0.627);margin-bottom:0;"> TIME  </h1>
+    </dev>
+    <!--<button onclick="checktime()" class="button" style="position:absolute;left:46%;top:60%;">检查时间</button>-->
+    <button onclick="changeBG()" class="button" style="position:absolute;left:92%;top:92%;padding:10px 20px;"> 更换背景 </button>
+    <div id="INPUT" class="input_area" style="display: none; position:absolute; left:35%; top:35%; border-radius: 10px;width: 30%;height: 30%;">
+        <p style="font-size: 150%;position: relative;top:7%;">请输入本地图片地址(还有BUG)</p>
+        <br>
+        <input id="imgloc" type="text" class="input" style="background-color: rgba(255, 255, 255, 0.493);backdrop-filter:40px;">
+        <br><br>
+        <button class="button" onclick="readandchange()" style="padding-top:3%;padding-bottom:3%;padding-top:2%;padding-bottom: 2%;background-color: #ffffff00;backdrop-filter: 40px;color:rgba(0, 0, 0, 0.601);">确定</button>
+    </div>
+    
+</body>
+</html> 
